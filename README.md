@@ -1,6 +1,9 @@
 # ConnectedSystemsFinal
 FInal Project for Connected Systems module UCL
 
+# COOL IDEA
+Add light sensor module to check when shop lights are on so that the sensor can stop recording data when the shop is closed
+
 
 # To Do List:
 1. Array of Days of Week to keep track of data per day when uploading to cloud
