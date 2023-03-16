@@ -6,6 +6,8 @@ const int lightSensorPin = A0;       // the pin that the light sensor is attache
 const int buzzerPin = 2;             // the pin that the buzzer is attached to
 
 int lightValue;                      // variable to store the light sensor reading
+int customerCount;                   // variable to store the total number of customers for the day
+
 volatile bool motionDetected = false;// variable to store the motion sensor status
 
 void setup() {
@@ -18,12 +20,20 @@ void setup() {
 
 void loop(){
   if (motionDetected) {             // check if motion is detected
-    Serial.println("Motion Detected");        
+    Serial.println("Motion Detected");
+
+    customerCount += 1;              // increments customerCount
+    Serial.println("Total Customers Today: ");
+    Serial.println(customerCount);   // displays Customer Count
+
     digitalWrite(ledPin, HIGH);     // turn LED ON
+
     tone(buzzerPin, 250);
     delay(50);                      // Wait
     noTone(buzzerPin);
+
     digitalWrite(ledPin, LOW);      // turn LED OFF
+
     Serial.println("Motion stopped");
     motionDetected = false;         // reset motion status
   }
