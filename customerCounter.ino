@@ -6,7 +6,7 @@ const int lightSensorPin = A0;       // the pin that the light sensor is attache
 const int buzzerPin = 2;             // the pin that the buzzer is attached to
 
 int lightValue;                      // variable to store the light sensor reading
-int customerCount;                   // variable to store the total number of customers for the day
+volatile int customerCount;                   // variable to store the total number of customers for the day
 
 volatile bool motionDetected = false;// variable to store the motion sensor status
 
@@ -25,6 +25,7 @@ void loop(){
     customerCount += 1;              // increments customerCount
     Serial.println("Total Customers Today: ");
     Serial.println(customerCount);   // displays Customer Count
+    //arduino cloud updates <-
 
     digitalWrite(ledPin, HIGH);     // turn LED ON
 
