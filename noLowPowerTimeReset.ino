@@ -7,7 +7,7 @@ const int buzzerPin = 2;             // the pin that the buzzer is attached to
 
 int lightValue;                      // variable to store the light sensor reading
 volatile int customerCount;          // variable to store the total number of customers for the day
-volatile int lastResetTime;          // variable to store the last reset time in hours
+volatile int lastResetTime;          // variable to store the last reset time in minutes
 
 volatile bool motionDetected = false;// variable to store the motion sensor status
 
@@ -18,23 +18,23 @@ void setup() {
   pinMode(lightSensorPin, INPUT);    // initialize light sensor as an input
   attachInterrupt(digitalPinToInterrupt(motionSensorPin), detectMotion, CHANGE);
   
-  // set initial lastResetTime to the current hour
-  lastResetTime = hour();
+  // set initial lastResetTime to the current time in minutes
+  lastResetTime = minute();
 }
 
 void loop(){
-  // check if it's midnight (hour 0) and reset customerCount to 0
-  if (hour() == 0 && lastResetTime != 0) {
-    customerCount = 0;
-    lastResetTime = 0; // update last reset time to midnight
+  // check if three minutes have passed since the last reset
+  if ((minute() - lastResetTime) >= 3) {
+    customerCount = 0;              // reset customerCount to 0
+    lastResetTime = minute();       // update last reset time
   }
   
   if (motionDetected) {             // check if motion is detected
     Serial.println("Motion Detected");
 
-    customerCount += 1;              // increments customerCount
+    customerCount += 1;             // increments customerCount
     Serial.println("Total Customers Today: ");
-    Serial.println(customerCount);   // displays Customer Count
+    Serial.println(customerCount);  // displays Customer Count
     //arduino cloud updates <-
 
     digitalWrite(ledPin, HIGH);     // turn LED ON
