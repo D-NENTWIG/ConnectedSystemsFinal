@@ -5,8 +5,14 @@ FInal Project for Connected Systems module UCL
 Add light sensor module to check when shop lights are on so that the sensor can stop recording data when the shop is closed
 
 
+
+https://mediacentral.ucl.ac.uk/Play/83622
 # To Do List:
-1. Array of Days of Week to keep track of data per day when uploading to cloud
-2. Array could be a 2D array to store both Day of Week and Openening Times for that Day.
-3. Keep track of hours (possibly for loop) so that device will run for only opening times.
-4. Create Dummy data for a couple weeks to have an example of how data will be presented
+1. Description of Application - Is the application realisitic and justifiable
+2. List of components and actuators used - along with their fucntion
+3. Demonstration of it working IRL and in Cloud.
+4. Makes Pros and Cons for Application
+5. Make Pros and Cons for Board and Sensors
+6. Make a System Design Diagram
+
+
