@@ -24,7 +24,7 @@ void setup() {
 
 void loop(){
   // check if three minutes have passed since the last reset
-  if ((minute() - lastResetTime) >= 3) {
+  if ((minute() - lastResetTime) >= 1) {
     customerCount = 0;              // reset customerCount to 0
     lastResetTime = minute();       // update last reset time
   }
